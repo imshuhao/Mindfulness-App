@@ -15,6 +15,8 @@ import PodcastScreen from './screens/Podcasts';
 import LoginScreen from './screens/Login';
 import ArticleScreen from './screens/Articles';
 
+import theme from './styles/theme';
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -68,7 +70,7 @@ function HomeTab() {
 
 export default function App() {
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeTab">
         <Stack.Screen

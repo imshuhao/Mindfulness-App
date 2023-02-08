@@ -1,47 +1,61 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import { NativeBaseProvider, Box, AspectRatio, Image, Stack, Heading, HStack, MoreIcon } from "native-base";
-const Greeting = props => {
-    return (
-      <View style={styles.center}>
-        <Box
-        shadow="2"
-        rounded="lg"
-        w={{ base: "64", md: "80", lg: "md" }}
-        _light={{ bg: "coolGray.50" }}
-        _dark={{ bg: "gray.700" }}
-        >
-        <AspectRatio w="100%" ratio={{
-        base: 1,
-        md: 1.5,
-        }}>
-        <Image source="https://picsum.photos/200" alt="image base" />
-        </AspectRatio>
-        <Text bold position="absolute" color="coolGray.50" top="0" m="4">
-        NEWS
-        </Text>
-        <Stack space="2" p="4">
-            <Text color="gray.400">February 2, 2023</Text>
-            <Heading size={["md", "lg", "md"]} fontWeight="medium">
-            The Garden City
+import { Box, AspectRatio, Image, Stack, Heading, HStack, MoreIcon, Center } from "native-base";
+const Example = props => {
+  return <Box alignItems="center">
+      <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
+      borderColor: "coolGray.600",
+      backgroundColor: "gray.700"
+    }} _web={{
+      shadow: 2,
+      borderWidth: 0
+    }} _light={{
+      backgroundColor: "gray.50"
+    }}>
+        <Box>
+          <AspectRatio w="100%" ratio={16 / 9}>
+            <Image source={{
+            uri: props.image
+          }} alt="image" />
+          </AspectRatio>
+          <Center bg="violet.500" _dark={{
+          bg: "violet.400"
+        }} _text={{
+          color: "warmGray.50",
+          fontWeight: "700",
+          fontSize: "xs"
+        }} position="absolute" bottom="0" px="3" py="1.5">
+            {props.level}
+          </Center>
+        </Box>
+        <Stack p="4" space={3}>
+          <Stack space={2}>
+            <Heading size="md" ml="-1">
+              The Garden City
             </Heading>
-        <Text isTruncated noOfLines={["4", "4", "4"]}>
-        Bengaluru (also called Bangalore) is the center of India's
-        high-tech industry. It is located in southern India on the Deccan
-        Plateau.The city is also known for its parks and nightlife.
-        Bangalore is the major center of India's IT industry, popularly
-        known as the Silicon Valley of India.
-        </Text>
-    </Stack>
-    <HStack space="3" px="4" pb="4">
-        <MoreIcon _light={{ color : "emerald.800" }} _dark={{ color : "emerald.300" }} />
-        <Text _light={{ color : "emerald.800" }} _dark={{ color : "emerald.300" }}>
-        Find out more
-        </Text>
-    </HStack>
-    </Box>
-      </View>
-    );
-  };
-  
-  export default Greeting;
+            <Text fontSize="xs" _light={{
+            color: "violet.500"
+          }} _dark={{
+            color: "violet.400"
+          }} fontWeight="500" ml="-0.5" mt="-1">
+              {props.title}
+            </Text>
+          </Stack>
+          <Text fontWeight="400">
+            {props.text}
+          </Text>
+          <HStack alignItems="center" space={4} justifyContent="space-between">
+            <HStack alignItems="center">
+              <Text color="coolGray.600" _dark={{
+              color: "warmGray.200"
+            }} fontWeight="400">
+                6 mins ago
+              </Text>
+            </HStack>
+          </HStack>
+        </Stack>
+      </Box>
+    </Box>;
+};
+
+export default Example;
