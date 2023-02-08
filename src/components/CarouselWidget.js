@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import { Box, AspectRatio, Image, Stack, Heading, HStack, MoreIcon, Center } from "native-base";
-const Example = props => {
+const Widget = props => {
   return <Box alignItems="center">
       <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
       borderColor: "coolGray.600",
@@ -58,4 +58,4 @@ const Example = props => {
     </Box>;
 };
 
-export default Example;
+export default Widget;

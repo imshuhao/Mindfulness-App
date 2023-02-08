@@ -5,7 +5,10 @@ import Widget from '../components/CarouselWidget';
 import { articles } from '../constants/db';
 
 const Item = ({image, title, text, level, category}) => (
-  <View style={styles.item}>
+  <View
+  style={styles.item}
+  onStartShouldSetResponder={() => {console.log('Clicked')}}
+  >
   <Widget
     // key={index}
     image={image}
