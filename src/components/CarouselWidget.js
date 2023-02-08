@@ -31,14 +31,14 @@ const Example = props => {
         <Stack p="4" space={3}>
           <Stack space={2}>
             <Heading size="md" ml="-1">
-              The Garden City
+              {props.title}
             </Heading>
             <Text fontSize="xs" _light={{
             color: "violet.500"
           }} _dark={{
             color: "violet.400"
           }} fontWeight="500" ml="-0.5" mt="-1">
-              {props.title}
+              {props.category}
             </Text>
           </Stack>
           <Text fontWeight="400">
