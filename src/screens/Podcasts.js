@@ -5,12 +5,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Greeting from '../components/Greeting';
 
-function PodcastScreen() {
+export default function PodcastScreen() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Greeting name="Podcast" />
       </View>
     );
 }
-
-export default PodcastScreen;

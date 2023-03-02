@@ -14,9 +14,9 @@ const Widget = props => {
     }}>
         <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
-            <Image source={{
-            uri: props.image
-          }} alt="image" />
+            <Image
+            source={{uri: props.image !=="" ? props.image : undefined }}
+            alt="image" />
           </AspectRatio>
           <Center bg="violet.500" _dark={{
           bg: "violet.400"
