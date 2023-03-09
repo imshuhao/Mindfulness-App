@@ -8,7 +8,15 @@
         "projectId": "230ccece-8deb-44ab-bb48-6224ffa7097c"
       }
     },
-    "owner": "imshuhao"
+    "owner": "imshuhao",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/230ccece-8deb-44ab-bb48-6224ffa7097c"
+    },
+    "android": {},
+    "ios": {}
   },
   "name": "mindfulness-app"
 }

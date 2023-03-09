@@ -16,6 +16,7 @@ import LoginScreen from './screens/Login';
 import ArticleScreen from './screens/Articles';
 import ArticleDisplayScreen from './screens/ArticleDisplay';
 import YouTubePlayScreen from './screens/YoutubePlay';
+import AudioPlayScreen from './screens/AudioPlay';
 
 import theme from './styles/theme';
 
@@ -85,6 +86,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="ArticleDisplay" component={ArticleDisplayScreen}  options={({ route }) => ({ title: route.params.title })}/>
         <Stack.Screen name="YouTubePlay" component={YouTubePlayScreen} />
+        <Stack.Screen name="AudioPlay" component={AudioPlayScreen} />
         
       </Stack.Navigator>
       {/* <Tab.Navigator initialRouteName="Home">

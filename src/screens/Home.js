@@ -19,6 +19,10 @@ export default function HomeScreen({ navigation }) {
           title="Play YouTube Video"
           onPress={() => navigation.navigate('YouTubePlay', {videoId: 'ZTJhzjF480s'})}
         />
+        <Button
+          title="Play Podcast Audio"
+          onPress={() => navigation.navigate('AudioPlay')}
+        />
       </View>
     );
 }
