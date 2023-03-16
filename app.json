@@ -2,7 +2,7 @@
   "expo": {
     "slug": "mindfulness-app",
     "name": "mindfulness-app",
-    "sdkVersion": "47.0.0",
+    "sdkVersion": "48.0.0",
     "extra": {
       "eas": {
         "projectId": "230ccece-8deb-44ab-bb48-6224ffa7097c"
