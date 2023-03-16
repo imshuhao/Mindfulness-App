@@ -41,7 +41,7 @@ const Widget = props => {
               {props.category}
             </Text>
           </Stack>
-          <Text fontWeight="400">
+          <Text fontWeight="400" numberOfLines={5}>
             {props.text}
           </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">

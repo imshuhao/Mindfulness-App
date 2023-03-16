@@ -7,11 +7,10 @@ import AudioSlider from '../components/AudioSlider';
 import styles from '../styles/styles';
 
 export default function AudioPlayScreen({route, navigation}) {
-    // const { audioURL } = route.params;
+    const { title, description, url, published } = route.params;
     // const [playing, setPlaying] = useState(false);
 
     return (
-
         <View style={[styles.StandardContainer, {
                 flex: 0,
                 flexDirection: "column",
@@ -27,21 +26,27 @@ export default function AudioPlayScreen({route, navigation}) {
                 }}>
 
                 <Text style={[styles.StandardText, {flex: 5}]}>
-                    Audio name
+                    {title}
                 </Text>
 
                 <TouchableOpacity 
                     style={[{flex: 1}]}
                 >
-                    <Text style={styles.StandardText}>Edit</Text>
+                    <Text style={styles.StandardText}>More</Text>
                 </TouchableOpacity>
                 
 
             </View>
 
-            <AudioSlider audio="https://www.buzzsprout.com/1853797/9885085-sex-dating-and-relationships-with-spinal-cord-injury.mp3"/>
-
+            {/* <AudioSlider audio="https://www.buzzsprout.com/1853797/9885085-sex-dating-and-relationships-with-spinal-cord-injury.mp3"/> */}
+            <AudioSlider audio={url}/>
+            <Text>{published}</Text>
+            <Text>{description}</Text>
         </View>
+        // Add a description of the podcast
+
+
+
   );
 
 }
