@@ -11,7 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import HomeScreen from './screens/Home';
 import BreathScreen from './screens/Breath';
-import PodcastScreen from './screens/Podcasts';
+import VideoScreen from './screens/Videos';
 import LoginScreen from './screens/Login';
 import ArticleScreen from './screens/Articles';
 import ArticleDisplayScreen from './screens/ArticleDisplay';
@@ -48,11 +48,11 @@ function HomeTab() {
       />
       <Tab.Screen
         name="Podcasts"
-        component={PodcastScreen}
+        component={VideoScreen}
         options={{
-          title: 'Podcasts',
+          title: 'Videos',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="podcast" color={color} size={size} />
+            <MaterialCommunityIcons name="youtube-subscription" color={color} size={size} />
           )
         }}
       />
@@ -81,7 +81,7 @@ export default function App() {
           component={HomeTab}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Podcasts" component={PodcastScreen} />
+        <Stack.Screen name="Videos" component={VideoScreen} />
         <Stack.Screen name="Breath" component={BreathScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="ArticleDisplay" component={ArticleDisplayScreen}  options={({ route }) => ({ title: route.params.title })}/>

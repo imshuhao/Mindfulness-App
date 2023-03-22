@@ -16,7 +16,13 @@
       "url": "https://u.expo.dev/230ccece-8deb-44ab-bb48-6224ffa7097c"
     },
     "android": {},
-    "ios": {}
+    "ios": {
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "audio"
+        ]
+      }
+    }
   },
   "name": "mindfulness-app"
 }

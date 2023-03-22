@@ -1,13 +1,38 @@
+import { Button, VStack, HStack } from 'native-base';
 import * as React from 'react';
-import { View, TouchableOpacity, SafeAreaView, FlatList, Text, Animated, StyleSheet, StatusBar } from 'react-native';
+import { 
+  View, 
+  TouchableOpacity, 
+  FlatList, 
+  Text, 
+  Animated, 
+  StyleSheet, 
+  StatusBar } from 'react-native';
 import ArticleWidget from '../components/ArticleWidget';
 import PodcastWidget from '../components/PodcastWidget';
 
-import { articles } from '../constants/db';
-import * as rssParser from 'react-native-rss-parser';
+import getData from '../utils/getData';
+import getRss from '../utils/getRss';
+
+var articleIndex = 0;
+
+const scrollToIndex = (ref, index, length) => {
+  // let randomIndex = Math.floor(Math.random(Date.now()) * length);
+  index = index % length;
+  index = index < 0 ? 0 : index;
+  ref.scrollToIndex({animated: true, index: index});
+}
 
 
-const podcasts = []
+const onViewableItemsChanged = ({ viewableItems, changed }) => {
+  try {
+    articleIndex = viewableItems[0].index;
+  } catch (error) {
+    console.log("Error in onViewableItemsChanged", error);
+  }
+  // console.log("Visible items are", viewableItems[0].index);
+  // console.log("Changed in this iteration", changed);
+}
 
 const ArticleItem = ({image, title, text, level, category, url, navigation}) => (
   <TouchableOpacity onPress={() => {navigation.navigate('ArticleDisplay', {
@@ -52,26 +77,25 @@ const AudioItem = ({title, description, url, published, navigation}) => (
 
 
 export default function ArticleScreen({ navigation }) {
-  fetch('https://feeds.buzzsprout.com/1853797.rss')
-  .then((response) => response.text())
-  .then((responseData) => rssParser.parse(responseData))
-  .then((rss) => {
-    // console.log(rss.title);
-    // console.log(rss.items.length);
-    for (let i = 0; i < rss.items.length; i++) {
-      podcasts.push({
-        id: i,
-        title: rss.items[i].title,
-        description: rss.items[i].description,
-        url: rss.items[i].enclosures[0].url,
-        published: rss.items[i].published
-      })
-    }
-  });
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>  
-        <SafeAreaView style={styles.container}>
+  const [podcasts, setPodcasts] = React.useState([]);
+  const [articles, setArticles] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  var articleFlatListRef = null;
+  React.useEffect(() => {
+    getData("https://mindfulness-backend.imshuhao.repl.co/articles/")
+    .then((response) => {
+      setArticles(response);
+      setLoading(false);
+    });
+    getRss('https://feeds.buzzsprout.com/1853797.rss')
+    .then((response) => {
+      setPodcasts(response);
+      setLoading(false);
+    });
+  }, []);
 
+    return (
+      <VStack space={4} alignItems="center">
         <Text>Podcasts</Text>
         <FlatList
         horizontal={true}
@@ -82,18 +106,19 @@ export default function ArticleScreen({ navigation }) {
         <AudioItem
         title={item.title}
         description={item.description}
-        url={item.url}
+        url={item.enclosures[0].url}
         published={item.published}
         navigation={navigation}
         >
         </AudioItem>
       }
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.published}
       />
-
 
       <Text>Articles</Text>
       <FlatList
+        ref={(ref) => { articleFlatListRef = ref; }}
+        onViewableItemsChanged={onViewableItemsChanged}
         horizontal={true}
         data={articles}
         initialNumToRender={4}
@@ -109,13 +134,15 @@ export default function ArticleScreen({ navigation }) {
           navigation={navigation}
           />
       }
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
       />
-    </SafeAreaView>
-      </View>
+      <HStack space={100} alignItems="center">
+      <Button onPress={() => scrollToIndex(articleFlatListRef, --articleIndex, articles.length)} title="Previos Artiucle">Back</Button>
+      <Button onPress={() => scrollToIndex(articleFlatListRef, ++articleIndex, articles.length)} title="Next Article">Next</Button>
+      </HStack>
+    </VStack>
     );
 }
-
 
 const styles = StyleSheet.create({
   container: {

@@ -30,7 +30,7 @@ const Widget = props => {
         </Box>
         <Stack p="4" space={3}>
           <Stack space={2}>
-            <Heading size="md" ml="-1">
+            <Heading size="md" ml="-1" numberOfLines={1}>
               {props.title}
             </Heading>
             <Text fontSize="xs" _light={{
@@ -41,7 +41,7 @@ const Widget = props => {
               {props.category}
             </Text>
           </Stack>
-          <Text fontWeight="400" numberOfLines={5}>
+          <Text fontWeight="400" numberOfLines={4}>
             {props.text}
           </Text>
           <HStack alignItems="center" space={4} justifyContent="space-between">
