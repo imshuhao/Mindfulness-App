@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useRef } from "react";
-import { View, Text, Button, Alert } from 'react-native';
+import { View, Text, Button, Alert, ScrollView } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import YoutubePlayer from "react-native-youtube-iframe";
+import { Heading } from "native-base";
 
 
 // export default function YouTubePlayScreen({route, navigation}) {
@@ -20,7 +21,7 @@ import YoutubePlayer from "react-native-youtube-iframe";
 // }
 
 export default function YouTubePlayScreen({route, navigation}) {
-    const { videoId } = route.params;
+    const { videoId, title, description } = route.params;
     const [playing, setPlaying] = useState(false);
 
     const onStateChange = useCallback((state) => {
@@ -35,7 +36,7 @@ export default function YouTubePlayScreen({route, navigation}) {
     }, []);
 
     return (
-        <View>
+        <ScrollView>
         <YoutubePlayer
             height={300}
             play={playing}
@@ -43,6 +44,9 @@ export default function YouTubePlayScreen({route, navigation}) {
             onChangeState={onStateChange}
         />
         <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
-        </View>
+        <Heading>{title}</Heading>
+        {/* <Text>{title}</Text> */}
+        <Text>{description}</Text>
+        </ScrollView>
     );
 }

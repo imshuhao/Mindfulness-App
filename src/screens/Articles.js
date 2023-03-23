@@ -1,4 +1,4 @@
-import { Button, VStack, HStack } from 'native-base';
+import { Button, VStack, HStack, Spacer } from 'native-base';
 import * as React from 'react';
 import { 
   View, 
@@ -114,6 +114,9 @@ export default function ArticleScreen({ navigation }) {
       }
         keyExtractor={item => item.published}
       />
+
+      <Spacer />
+
 
       <Text>Articles</Text>
       <FlatList

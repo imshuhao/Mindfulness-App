@@ -56,7 +56,7 @@ function HomeTab() {
           )
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Breath"
         component={BreathScreen}
         options={{
@@ -65,7 +65,7 @@ function HomeTab() {
             <MaterialCommunityIcons name="spa" color={color} size={size} />
           )
         }}
-      />
+      /> */}
       {/* <Tab.Screen name="Login" component={LoginScreen} /> */}
     </Tab.Navigator>
   );
