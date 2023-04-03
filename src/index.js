@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator();
 function HomeTab() {
   return (
     <Tab.Navigator initialRouteName="Home">
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
@@ -35,7 +35,7 @@ function HomeTab() {
             <MaterialCommunityIcons name="home" color={color} size={size} />
           )
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Article"
         component={ArticleScreen}
